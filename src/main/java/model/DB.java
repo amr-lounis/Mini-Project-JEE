@@ -12,7 +12,7 @@ public class DB {
 	// --------------------------------------------- Dependency Inversion pattern
 	private DB() {
 		// MySql or h2 -> get configuration from persistence.xml
-		emf = Persistence.createEntityManagerFactory("mysql");
+		emf = Persistence.createEntityManagerFactory("h2");
 		em = emf.createEntityManager();
 	}
 
@@ -24,7 +24,7 @@ public class DB {
 		synchronized (LOCK) {
 			if (db == null) {
 				db = new DB();
-				System.out.println("********************* : singleton pattern");
+				System.out.println("********************* : getInstanceDB : singleton pattern");
 			}
 
 		}
