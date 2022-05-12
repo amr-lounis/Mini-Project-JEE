@@ -19,13 +19,7 @@ public class Book extends C_UD{
 	@OneToMany(mappedBy = "id")
 	private Set<EtudiantBook> etudiantbook = new HashSet<EtudiantBook>();
 
-	//----------------------------------------------------------------- code
-	public Book() {}
-	
-	public Book(String n) {
-		this.name = n;
-	}
-
+	//----------------------------------------------------------------- static code
 	public static Book getOne(Long id) {
 		return DB.getInstanceDB().em.find(Book.class, id);
 	}
@@ -34,6 +28,12 @@ public class Book extends C_UD{
 		Query query = DB.getInstanceDB().em.createQuery(hql);
 		query.setParameter(1, s);
 		return query.getResultList();
+	}
+	//----------------------------------------------------------------- Object code
+	public Book() {}
+	
+	public Book(String n) {
+		this.name = n;
 	}
 	//----------------------------------------------------------------- Getter Setter
 	public Long getId() {

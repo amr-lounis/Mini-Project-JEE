@@ -16,14 +16,8 @@ public class Universite extends C_UD{
 	// -----------------------------
 	@ManyToOne
 	private PackageType packageType;
-
-	//----------------------------------------------------------------- code
-	public Universite() {}
 	
-	public Universite(String name, PackageType packageType) {
-		this.name = name;
-		this.packageType = packageType;
-	}
+	//----------------------------------------------------------------- static code
 	
 	public static Universite getOne(Long id) {
 		return DB.getInstanceDB().em.find(Universite.class, id);
@@ -34,6 +28,15 @@ public class Universite extends C_UD{
 		query.setParameter(1, s);
 		return query.getResultList();
 	}
+
+	//----------------------------------------------------------------- Object code
+	public Universite() {}
+	
+	public Universite(String name, PackageType packageType) {
+		this.name = name;
+		this.packageType = packageType;
+	}
+	
 	//----------------------------------------------------------------- Getter Setter
 
 	public Long getId() {

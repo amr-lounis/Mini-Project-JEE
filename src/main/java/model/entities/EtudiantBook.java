@@ -24,7 +24,7 @@ public class EtudiantBook extends C_UD{
 	@JoinColumn(name = "book_id")
 	private Book book;
 
-	//----------------------------------------------------------------- code
+	//----------------------------------------------------------------- Object code
 	public EtudiantBook() {}
 	public EtudiantBook(Etudiant e, Book b) {
 		long now = System.currentTimeMillis();

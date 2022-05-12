@@ -23,7 +23,30 @@ public class Etudiant extends C_UD {
 	// -----------------------------
 	@OneToMany(mappedBy = "id")
 	private Set<EtudiantBook> etudiantbook = new HashSet<EtudiantBook>();
-	//----------------------------------------------------------------- code
+	//----------------------------------------------------------------- static code
+	public static Etudiant login(String name , String password) {
+		String hql = "SELECT e FROM Etudiant e "
+				+ "WHERE e.name = ?1 "
+				+ "AND e.password = ?2 ";
+		Query query = DB.getInstanceDB().em.createQuery(hql);
+		query.setParameter(1, name);
+		query.setParameter(2, password);
+		List<Etudiant> le =  query.getResultList();
+		return (le.size() == 1) ?  le.get(0) : null;
+	}
+	
+	public static Etudiant getOne(Long id) {
+		return DB.getInstanceDB().em.find(Etudiant.class, id);
+	}
+
+	public static List<Etudiant> search(String s) {
+		String hql = "select b from Etudiant b WHERE b.name LIKE CONCAT('%',?1,'%')";
+		Query query = DB.getInstanceDB().em.createQuery(hql);
+		query.setParameter(1, s);
+		return query.getResultList();
+	}
+
+	//----------------------------------------------------------------- object code
 	public Etudiant() {}
 	
 	public Etudiant(String name, String password, Universite universite) {
@@ -55,16 +78,6 @@ public class Etudiant extends C_UD {
 		}
 	}
 	
-	public static Etudiant getOne(Long id) {
-		return DB.getInstanceDB().em.find(Etudiant.class, id);
-	}
-
-	public static List<Etudiant> search(String s) {
-		String hql = "select b from Etudiant b WHERE b.name LIKE CONCAT('%',?1,'%')";
-		Query query = DB.getInstanceDB().em.createQuery(hql);
-		query.setParameter(1, s);
-		return query.getResultList();
-	}
 
 	public List<Book> getMyBooksNotExpire() {
 		String hql = "SELECT eb.book FROM EtudiantBook eb inner join eb.book inner join eb.etudiant "
@@ -90,6 +103,7 @@ public class Etudiant extends C_UD {
 
 		return (int) Integer.valueOf(count);
 	}
+
 	public String getPackageName() {
 		String pn = universite.getPackageType().getName();
 		return pn;

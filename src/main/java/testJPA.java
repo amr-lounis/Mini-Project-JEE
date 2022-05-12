@@ -24,12 +24,18 @@ public class testJPA {
 
 		//----------------------------------------------
 		
-		Etudiant e2 = Etudiant.getOne(1l);
-		List<Book> lb = e2.getMyBooksNotExpire();
-		
-		for (Book book : lb) {
-			System.out.println("********** : "+book.getId()+" : ********** "+book.getName());
+		Etudiant e = Etudiant.login("Etudiant 01", "password01");
+		if(e != null) {
+			System.out.println("login is ok");
+			System.out.println(e.getName());
+			
+			List<Book> lb = e.getMyBooksNotExpire();
+			for (Book book : lb) {
+				System.out.println("********** : "+book.getId()+" : ********** "+book.getName());
+			}
+		}else {
+			System.out.println("name or password is error");
 		}
-
+		
 	}
 }

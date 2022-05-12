@@ -14,12 +14,7 @@ public class PackageType extends C_UD{
 	//-----------------------------
 	private String name;
 
-	//----------------------------------------------------------------- code
-	public PackageType() {}
-	
-    public PackageType(String name) {
-    	this.name = name;
-    }
+	//----------------------------------------------------------------- static code
 	public static PackageType getOne(Long id) {
 		return DB.getInstanceDB().em.find(PackageType.class, id);
 	}
@@ -29,6 +24,12 @@ public class PackageType extends C_UD{
 		query.setParameter(1, s);
 		return query.getResultList();
 	}
+	//----------------------------------------------------------------- Object code
+	public PackageType() {}
+	
+    public PackageType(String name) {
+    	this.name = name;
+    }
 	//----------------------------------------------------------------- Getter Setter
 	public Long getId() {
 		return id;
@@ -42,6 +43,4 @@ public class PackageType extends C_UD{
 	public void setName(String name) {
 		this.name = name;
 	}
-	
-	
 }
