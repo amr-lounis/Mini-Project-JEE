@@ -12,7 +12,7 @@ public class DB {
 	// --------------------------------------------- Dependency Inversion pattern
 	private DB() {
 		// MySql or h2 -> get configuration from persistence.xml
-		emf = Persistence.createEntityManagerFactory("h2");
+		emf = Persistence.createEntityManagerFactory("mysql");
 		em = emf.createEntityManager();
 	}
 

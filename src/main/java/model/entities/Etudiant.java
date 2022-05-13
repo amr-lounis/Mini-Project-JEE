@@ -86,8 +86,8 @@ public class Etudiant extends C_UD {
 		query.setParameter(1, this.id);
 		return query.getResultList();
 	}
-	public List<Object[]> getMyBooksNotExpireAllInfo() {
-		String hql = "FROM EtudiantBook eb inner join eb.book inner join eb.etudiant "
+	public List<Object> getMyBooksNotExpireAllInfo() {
+		String hql = "SELECT eb.book.id , eb.book.name , eb.beginDateBookRental , eb.endDateBookRental FROM EtudiantBook eb inner join eb.book inner join eb.etudiant "
 				+ "WHERE eb.etudiant.id = ?1 " + "AND eb.endDateBookRental >= sysdate()";
 		Query query = DB.getInstanceDB().em.createQuery(hql);
 		query.setParameter(1, this.id);
