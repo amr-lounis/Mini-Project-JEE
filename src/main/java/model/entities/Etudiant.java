@@ -24,15 +24,17 @@ public class Etudiant extends C_UD {
 	@OneToMany(mappedBy = "id")
 	private Set<EtudiantBook> etudiantbook = new HashSet<EtudiantBook>();
 	//----------------------------------------------------------------- static code
-	public static Etudiant login(String name , String password) {
-		String hql = "SELECT e FROM Etudiant e "
-				+ "WHERE e.name = ?1 "
-				+ "AND e.password = ?2 ";
+	public static Etudiant getByName(String name ) {
+		String hql = "SELECT e FROM Etudiant e WHERE e.name = ?1 ";
 		Query query = DB.getInstanceDB().em.createQuery(hql);
 		query.setParameter(1, name);
-		query.setParameter(2, password);
 		List<Etudiant> le =  query.getResultList();
 		return (le.size() == 1) ?  le.get(0) : null;
+	}
+	public static Etudiant login(String name , String password) {
+		Etudiant e = getByName(name);
+		if(e!=null) if(e.password.equals(password)) return e;
+		return null;
 	}
 	
 	public static Etudiant getOne(Long id) {
