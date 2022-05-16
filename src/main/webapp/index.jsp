@@ -1,4 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="UTF-8" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@page import="model.DB"%>
 <%@page import="model.entities.Etudiant"%>
 <%@page import="java.util.List"%>
@@ -7,7 +8,8 @@
 <title>sign in</title>
 <style>
 #content {text-align: center;background-color: #AAAAAA;padding: 50;margin: 50;}
-#footer {text-align: center;background-color: #AA0000;padding: 50;margin: 50;}
+#footer {text-align: center;background-color: #AA0000;padding: 50;margin: 50; align-content: center;}
+table {   margin-left: auto;margin-right: auto;}
 </style>
 </head>
 <body>
@@ -28,7 +30,7 @@ if(!name.isEmpty() & !password.isEmpty() ){
 		Etudiant e = Etudiant.login(name, password);
 		if(e!=null){
 			request.getSession().setAttribute("sessionLogin", "etudiant");
-			request.getSession().setAttribute("user", e);
+			request.getSession().setAttribute("etudiant", e);
 		}else{
 			request.setAttribute("error", "error username or password");
 		}
@@ -53,6 +55,7 @@ if(sessionLogin!=null){
 </div>
 
 <div id="content">
+
 <form method="post">
     <input type="text" name="name" placeholder="UserName" /><br />
     <input type="text" name="password" placeholder="Password"/><br />
@@ -63,8 +66,15 @@ if(sessionLogin!=null){
 </div>
 
 <div id="footer">
-admin : admin --------------- password : admin <br>
-etudiant : etudiant01 ------- password : password01
+<p>
+users for test
+<table border="1">
+  <tr><th>user</th> <th>user name</th> <th>password</th></tr>
+  <tr><th>01</th> <th>admin</th> <th>admin</th></tr>
+  <tr><th>02</th> <th>etudiant01</th> <th>password01</th></tr>
+</table>
+
+</p>
 </div>
 
 </body>
