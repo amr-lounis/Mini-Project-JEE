@@ -4,7 +4,7 @@ import javax.persistence.EntityManager;
 
 import model.DB;
 public class C_UD {
-	public void Create() {
+	public void create() {
 		EntityManager em = DB.getInstanceDB().em;
 		em.getTransaction().begin();
 		em.persist(this);

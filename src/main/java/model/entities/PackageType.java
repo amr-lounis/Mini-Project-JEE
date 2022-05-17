@@ -19,7 +19,7 @@ public class PackageType extends C_UD{
 		return DB.getInstanceDB().em.find(PackageType.class, id);
 	}
 	public static List<PackageType> search(String s) {
-		String hql = "select b from PackageType b WHERE b.name LIKE CONCAT('%',?1,'%')";
+		String hql = "select p from PackageType p WHERE p.name LIKE CONCAT('%',?1,'%')";
 		Query query = DB.getInstanceDB().em.createQuery(hql);
 		query.setParameter(1, s);
 		return query.getResultList();

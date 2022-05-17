@@ -73,7 +73,7 @@ public class Etudiant extends C_UD {
 
 	public void takeBookFromLibrary(Book b) {
 		if(this.getNumberOfMyBooksNotExpire() < sizePackage) {
-			new EtudiantBook(this, b).Create();
+			new EtudiantBook(this, b).create();
 		}
 		else {
 			System.out.println("********** : canot add new book");
