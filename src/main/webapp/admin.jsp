@@ -67,12 +67,12 @@ ${Etudiant.getOne(param.id_etudiant_selected).delete()}
 <!----------------------------------------------- html submit etudiant-->
 <form method="post">
 	<table border="1">
-	<tr><td>ID </td><td><input type="text" name="id_etudiant_selected" value="${(param.selectEtudiant != null ) ? Etudiant.getOne(param.selectEtudiant).id : ''}" readonly/></td></tr>
+	<tr><td>ID </td><td><input type="text" name="id_etudiant_selected" value="${(param.selectEtudiant != null ) ? Etudiant.getOne(param.selectEtudiant).id : ''}" style="background-color: #AAAAAA" readonly/></td></tr>
 	<tr><td>NAME </td><td><input type="text" name="name_etudiant_selected"  value="${(param.selectEtudiant != null ) ? Etudiant.getOne(param.selectEtudiant).name : ''}"/></td></tr>
 	<tr><td>PASSWORD </td><td><input type="text" name="password_etudiant_selected" value="${(param.selectEtudiant != null ) ? Etudiant.getOne(param.selectEtudiant).password : ''}"/></td></tr>
 	<tr><td>ID Universite </td><td><input type="text" name="universite_id_selected" id="universite_id_selected" value="${(param.selectEtudiant != null ) ? Etudiant.getOne(param.selectEtudiant).universite.id : ''}"/></td></tr>
-    <tr><td>Universite </td><td><input type="text" name="universite_name_selected" value="${(param.selectEtudiant != null ) ? Etudiant.getOne(param.selectEtudiant).universite.name : ''}" readonly/></td></tr>
-   	<tr><td>Size Package </td><td><input type="text" name="universite_name_selected" value="${(param.selectEtudiant != null ) ? Etudiant.getOne(param.selectEtudiant).sizePackage : ''}" readonly/></td></tr>
+    <tr><td>Universite </td><td><input type="text" name="universite_name_selected" value="${(param.selectEtudiant != null ) ? Etudiant.getOne(param.selectEtudiant).universite.name : ''}" style="background-color: #AAAAAA" readonly/></td></tr>
+   	<tr><td>Size Package </td><td><input type="text" name="universite_name_selected" value="${(param.selectEtudiant != null ) ? Etudiant.getOne(param.selectEtudiant).sizePackage : ''}" style="background-color: #AAAAAA" readonly/></td></tr>
     </table>
     <button onclick="document.getElementById('input').value = ''">Clear</button> 
     <input type="submit" name="submitEtudiant" value="addEtudiant" />
