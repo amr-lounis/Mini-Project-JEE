@@ -40,13 +40,20 @@ public class DB {
 		if(PackageType.getOne(1l) == null) {
 			new Book( "book 01").create();
 			new Book( "book 02").create();
+			new Book( "book 03").create();
+			new Book( "book 04").create();
+			new Book( "book 05").create();
 			new PackageType("premium").create();
 			new PackageType("standard").create();
 			new PackageType("illimite").create();		
 			new Universite("universite alger 1",PackageType.getOne(1l)).create();
+			new Universite("universite alger 2",PackageType.getOne(2l)).create();
+			new Universite("universite alger 3",PackageType.getOne(2l)).create();
+			new Universite("universite USTHB",PackageType.getOne(3l)).create();
 			new Etudiant("etudiant01", "password01", Universite.getOne(1l)).create();
-			new Etudiant("etudiant02", "password02", Universite.getOne(1l)).create();
-			new Etudiant("etudiant03", "password03", Universite.getOne(1l)).create();
+			new Etudiant("etudiant02", "password02", Universite.getOne(2l)).create();
+			new Etudiant("etudiant03", "password03", Universite.getOne(3l)).create();
+			new Etudiant("etudiant04", "password03", Universite.getOne(4l)).create();
 			Etudiant e1 = Etudiant.getOne(1l);
 			e1.takeBookFromLibrary(Book.getOne(1l));
 			e1.takeBookFromLibrary(Book.getOne(2l));

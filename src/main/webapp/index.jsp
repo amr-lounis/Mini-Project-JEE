@@ -22,12 +22,13 @@ ${DB.init()}
 <c:choose>
   <c:when test="${(param.name eq 'admin') and (param.password eq 'admin')}">
     <c:set var="session_login" value="admin" scope="session" />
-  	<c:set var="error" value="ok is admin"/>
   </c:when>
   <c:when test="${Etudiant.login(param.name, param.password) != null}">
 	<c:set var="session_login" value="etudiant" scope="session" />
 	<c:set var="etudiant" value="${Etudiant.login(param.name, param.password)}" scope="session" />
-    <c:set var="error" value="ok is etudiant"/>
+  </c:when>
+  <c:when test="${param.name eq null}">
+  	<c:set var="error" value=""/>
   </c:when>
   <c:otherwise>
     <c:set var="error" value="error username || password"/>

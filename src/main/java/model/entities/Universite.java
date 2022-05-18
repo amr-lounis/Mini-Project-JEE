@@ -20,7 +20,11 @@ public class Universite extends C_UD{
 	//----------------------------------------------------------------- static code
 	
 	public static Universite getOne(Long id) {
-		return DB.getInstanceDB().em.find(Universite.class, id);
+		try {
+			return DB.getInstanceDB().em.find(Universite.class, id);
+		} catch (Exception e) {
+			return null;
+		}
 	}
 	public static List<Universite> search(String s) {
 		String hql = "select b from Universite b WHERE b.name LIKE CONCAT('%',?1,'%')";
