@@ -32,6 +32,15 @@ public class Universite extends C_UD{
 		query.setParameter(1, s);
 		return query.getResultList();
 	}
+	
+	public static Universite addNew(String name, Long packageType_id)  {
+		try {
+			PackageType pt = PackageType.getOne(packageType_id);
+			Universite u = new Universite(name, pt);
+			u.create();
+			return u;
+		} catch (Exception e) {return null;}
+	}
 
 	//----------------------------------------------------------------- Object code
 	public Universite() {}

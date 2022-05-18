@@ -24,6 +24,14 @@ public class PackageType extends C_UD{
 		query.setParameter(1, s);
 		return query.getResultList();
 	}
+	
+	public static PackageType addNew(String name)  {
+		try {
+			PackageType pt = new PackageType(name);
+			pt.create();
+			return pt;
+		} catch (Exception e) {return null;}
+	}
 	//----------------------------------------------------------------- Object code
 	public PackageType() {}
 	

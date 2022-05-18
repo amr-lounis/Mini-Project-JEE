@@ -24,16 +24,25 @@ public class Book extends C_UD{
 		return DB.getInstanceDB().em.find(Book.class, id);
 	}
 	public static List<Book> search(String s) {
-		String hql = "select b from Book b WHERE b.name LIKE CONCAT('%',?1,'%')";
+		String hql = "select b from Book b WHERE b.name LIKE CONCAT('%',?1,'%') or b.domaine LIKE CONCAT('%',?1,'%')";
 		Query query = DB.getInstanceDB().em.createQuery(hql);
 		query.setParameter(1, s);
 		return query.getResultList();
 	}
+	
+	public static Book addNew(String name,String domaine)  {
+		try {
+			Book b = new Book(name,domaine);
+			b.create();
+			return b;
+		} catch (Exception e) {return null;}
+	}
 	//----------------------------------------------------------------- Object code
 	public Book() {}
 	
-	public Book(String n) {
-		this.name = n;
+	public Book(String name,String domaine) {
+		this.name = name;
+		this.domaine = domaine;
 	}
 	//----------------------------------------------------------------- Getter Setter
 	public Long getId() {

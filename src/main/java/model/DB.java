@@ -38,23 +38,27 @@ public class DB {
 	
 	public static void init() {
 		if(PackageType.getOne(1l) == null) {
-			new Book( "book 01").create();
-			new Book( "book 02").create();
-			new Book( "book 03").create();
-			new Book( "book 04").create();
-			new Book( "book 05").create();
-			new PackageType("premium").create();
-			new PackageType("standard").create();
-			new PackageType("illimite").create();		
-			new Universite("universite alger 1",PackageType.getOne(1l)).create();
-			new Universite("universite alger 2",PackageType.getOne(2l)).create();
-			new Universite("universite alger 3",PackageType.getOne(2l)).create();
-			new Universite("universite USTHB",PackageType.getOne(3l)).create();
-			new Etudiant("etudiant01", "password01", Universite.getOne(1l)).create();
-			new Etudiant("etudiant02", "password02", Universite.getOne(2l)).create();
-			new Etudiant("etudiant03", "password03", Universite.getOne(3l)).create();
-			new Etudiant("etudiant04", "password03", Universite.getOne(4l)).create();
-			Etudiant e1 = Etudiant.getOne(1l);
+			Book.addNew("book 01", "domaine 01");
+			Book.addNew("book 02", "domaine 02");
+			Book.addNew("book 03", "domaine 03");
+			Book.addNew("book 04", "domaine 04");
+			Book.addNew("book 05", "domaine 05");
+
+			PackageType.addNew("premium");
+			PackageType.addNew("standard");
+			PackageType.addNew("illimite");
+	
+			Universite.addNew("universite alger 1",1L);
+			Universite.addNew("universite alger 2",2L);
+			Universite.addNew("universite alger 3",2L);
+			Universite.addNew("universite USTHB",1L);
+			
+			Etudiant.addNew("etudiant01", "password01", 1L);
+			Etudiant.addNew("etudiant02", "password02", 2L);
+			Etudiant.addNew("etudiant03", "password03", 3L);
+			Etudiant.addNew("etudiant04", "password04", 4L);
+			
+			Etudiant e1 = Etudiant.getOneById(1l);
 			e1.takeBookFromLibrary(Book.getOne(1l));
 			e1.takeBookFromLibrary(Book.getOne(2l));
 			System.out.println("not exist");

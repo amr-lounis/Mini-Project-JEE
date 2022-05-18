@@ -38,7 +38,7 @@
 <% 
 try{
 	Etudiant etudiant_n =new Etudiant();
-	etudiant_n.setName(request.getParameter("universite_id_selected"));
+	etudiant_n.setName(request.getParameter("name_etudiant_selected"));
 	etudiant_n.setPassword(request.getParameter("password_etudiant_selected"));
 	Long id_u = Long.valueOf(request.getParameter("universite_id_selected"));
 	etudiant_n.setUniversite(Universite.getOne(id_u));
