@@ -6,28 +6,7 @@
 
 <html>
 <body>
-<!-- ******************************************************************* session-->
-<c:if test="${param.logout == 'logout' }"> 
-	 ${sessionScope.session_login = null } 
-	 <c:redirect url = "/"/>
-</c:if>
-
-<c:if test="${sessionScope.session_login == 'etudiant' }"> 
-<table>
-  <tr>
-    <th><h2>etudiant : ${sessionScope.etudiant.name}</h2></th>
-    <th>
-    <FORM METHOD="POST">
-    	<input type="submit" NAME="logout" value="logout" />
-	</FORM>
-	</th>
-  </tr>
-</table>
-<!-- ******************************************************************* -->
-</c:if>
-<c:if test="${sessionScope.session_login == null }">
-<c:redirect url = "/"/>
-</c:if>
+<%@ include file="/WEB-INF/include/session_include.jsp" %>
 
 <div style="width: 100%;">
     <div style="width: 50%; float: left;"> 

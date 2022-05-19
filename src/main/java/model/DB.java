@@ -51,7 +51,7 @@ public class DB {
 			Universite.addNew("universite alger 1",1L);
 			Universite.addNew("universite alger 2",2L);
 			Universite.addNew("universite alger 3",2L);
-			Universite.addNew("universite USTHB",1L);
+			Universite.addNew("universite USTHB",3L);
 			
 			Etudiant.addNew("etudiant01", "password01", 1L);
 			Etudiant.addNew("etudiant02", "password02", 2L);

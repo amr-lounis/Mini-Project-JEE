@@ -57,7 +57,17 @@ public class Etudiant extends C_UD {
 			return e;
 		} catch (Exception e) {return null;}
 	}
-
+	public static Etudiant updateEtudiant(Long id,String name, String password, Long universite_id)  {
+		try {
+			Etudiant e = Etudiant.getOneById(id);
+			e.setName(name);
+			e.setPassword(password);
+			Universite u = Universite.getOne(universite_id);
+			e.setUniversite(u);;
+			e.create();
+			return e;
+		} catch (Exception e) {return null;}
+	}
 	//----------------------------------------------------------------- object code
 	public Etudiant() {}
 	
@@ -69,16 +79,19 @@ public class Etudiant extends C_UD {
 		String pn = getPackageName();
 		if(pn.equals("premium"))this.sizePackage = 20;
 		else if(pn.equals("standard"))this.sizePackage = 10;
-		else if(pn.equals("illimite"))this.sizePackage = 999999999;
-		
-		this.sizePackage = 10;
+		else if(pn.equals("illimite"))this.sizePackage = 1000000000;
 	}
 
-	public void addBonus() {
-		String pn = getPackageName();
-		if(pn.equals("premium"))this.sizePackage += 10;
-		else if(pn.equals("standard"))this.sizePackage += 5;
-		this.update();
+	public int addBonus() {
+		try {
+			String pn = getPackageName();
+			if(pn.equals("premium"))this.sizePackage += 10;
+			else if(pn.equals("standard"))this.sizePackage += 5;
+			this.update();
+			return this.sizePackage;
+		} catch (Exception e) {
+			return -1;
+		}
 	}
 
 	public void takeBookFromLibrary(Book b) {
