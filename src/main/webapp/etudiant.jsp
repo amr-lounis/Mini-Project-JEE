@@ -22,10 +22,10 @@
 		    <input type="submit" value="search" />
 		</form>
 		<table border="1" >
-		<tr><th>ID BOOK</th><th>NAME BOOK</th><tr>
+		<tr><th>ID BOOK</th><th>NAME BOOK</th><th>DOMAIN BOOK</th><tr>
 		<c:forEach var="b" items="${Book.search(param.name)}">
 		  <tr>
-		  <th>${b.id}</th><th>${b.name}</th>
+		  <th>${b.id}</th><th>${b.name}</th><th>${b.domaine}</th>
 			<th >
 			<!-- ***************************************   take Book  -->
 	  		<form method="post">
@@ -40,9 +40,26 @@
     </div>
     <div style="margin-left: 50%;"> 
        <!-- ******************************************************************* My Books Not Expire -->
-		<h3> My Books Not Expire </h3>
+		<h3> My INFO </h3>
+		My NAME :
+		${sessionScope.etudiant.name}
+		<br>
+		My Universite :
+		${sessionScope.etudiant.universite.name}
+		<br>
+		Package type of Universite :
+		${sessionScope.etudiant.universite.packageType.name}
+		<br>
+	    My package Sizs :
+		${sessionScope.etudiant.sizePackage}
+		<br>
 		Number Of My Books Not Expire is :
 		${sessionScope.etudiant.getNumberOfMyBooksNotExpire()}
+		<br>
+		How many books can be added is :
+		${sessionScope.etudiant.sizePackage - sessionScope.etudiant.getNumberOfMyBooksNotExpire()}
+		
+		<h3> My Books Not Expire </h3>
 		<table border="1" >
 		<tr><th>ID BOOK</th><th>NAME BOOK</th><th>BEGGIN</th><th> END </th><tr>
 		<c:forEach var="b" items="${sessionScope.etudiant.getMyBooksNotExpireAllInfo()}">

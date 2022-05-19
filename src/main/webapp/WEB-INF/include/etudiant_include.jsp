@@ -1,18 +1,21 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 
-<div style="width: 35%; float: left; overflow: scroll;border-style:solid;height: 500; background-color: #AAAAAA; border-color: #0000FF"> 
+<div class="fragment"> 
+<c:if test="${param.etudiant_id_selected != null}">
+<c:set var="et_selected" value="${Etudiant.getOneById(param.etudiant_id_selected) }"/>
+</c:if>
 
 <c:choose>
-  <c:when test="${param.submitEtudiant == 'addEtudiant'}"><!-- add etudiant -->
-   ${Etudiant.addNew(param.etudiant_name_selected,param.etudiant_password_selected, param.universite_id_selected)}
+  <c:when test="${param.submitEtudiant == 'add_Et'}"><!-- add etudiant -->
+   ${Etudiant.addNew(param.etudiant_name_selected,param.etudiant_password_selected, param.universite_id_selected) != null ? 'ok':'error'}
   </c:when>
-  <c:when test="${param.submitEtudiant == 'addBonusEtudiant'}"><!-- add bonus etudiant -->
+  <c:when test="${param.submitEtudiant == 'addBonus_Et'}"><!-- add bonus etudiant -->
    ${Etudiant.getOneById(param.etudiant_id_selected).addBonus() >= 0 ? 'ok' : 'error'}
   </c:when>
-  <c:when test="${param.submitEtudiant == 'updateEtudiant'}"><!-- update etudiant -->
+  <c:when test="${param.submitEtudiant == 'update_Et'}"><!-- update etudiant -->
    ${Etudiant.updateEtudiant(param.etudiant_id_selected,param.etudiant_name_selected,param.etudiant_password_selected, param.universite_id_selected) != null ? 'ok' : 'error'}
   </c:when>
-  <c:when test="${param.submitEtudiant == 'deleteEtudiant'}"><!-- update etudiant -->
+  <c:when test="${param.submitEtudiant == 'delete_Et'}"><!-- update etudiant -->
    ${Etudiant.getOneById(param.etudiant_id_selected).delete() == true ? 'ok' : 'error'}
   </c:when>
 </c:choose>
@@ -20,16 +23,16 @@
 <!----------------------------------------------- html submit etudiant-->
 <form method="post">
 	<table border="1">
-	<tr><td>ID </td><td><input type="text" name="etudiant_id_selected" value="${(param.etudiant_id_selected != null ) ? Etudiant.getOneById(param.etudiant_id_selected).id : ''}" style="background-color: #AAAAAA" readonly/></td></tr>
-	<tr><td>NAME </td><td><input type="text" name="etudiant_name_selected"  value="${(param.etudiant_id_selected != null ) ? Etudiant.getOneById(param.etudiant_id_selected).name : ''}"/></td></tr>
-	<tr><td>PASSWORD </td><td><input type="text" name="etudiant_password_selected" value="${(param.etudiant_id_selected != null ) ? Etudiant.getOneById(param.etudiant_id_selected).password : ''}"/></td></tr>
-	<tr><td>Size Package </td><td><input type="text"  value="${(param.etudiant_id_selected != null ) ? Etudiant.getOneById(param.etudiant_id_selected).sizePackage : ''}" style="background-color: #AAAAAA" readonly/></td></tr>
+	<tr><td>ID </td><td><input id='in_id' type="text"  name="etudiant_id_selected" value="${(et_selected != null ) ? et_selected.id : ''}" style="background-color: #AAAAAA" readonly/></td></tr>
+	<tr><td>NAME </td><td><input id='in_nm' type="text" name="etudiant_name_selected"  value="${(et_selected != null ) ? et_selected.name : ''}"/></td></tr>
+	<tr><td>PASSWORD </td><td><input id='in_pwd' type="text" name="etudiant_password_selected" value="${(et_selected != null ) ? et_selected.password : ''}"/></td></tr>
+	<tr><td>Size Package </td><td><input id='in_sp' type="text"  value="${(et_selected != null ) ? et_selected.sizePackage : ''}" style="background-color: #AAAAAA" readonly/></td></tr>
     
 	<tr><td>Universite </td><td>
 		<select name="universite_id_selected">
 			<c:forEach var="u" items="${Universite.search('')}">
 		  		<option 
-		  		${(param.etudiant_id_selected != null )?(Etudiant.getOneById(param.etudiant_id_selected).universite.id == u.id ) ? 'selected':'':''}
+		  		${(et_selected != null)?(et_selected.universite.id == u.id ) ? 'selected':'':''}
 		  		 value="${u.id}">
 				${u.name}
 		  		</option>
@@ -37,13 +40,22 @@
 		</select>
 	</td></tr>
    	</table>
-    <input type="submit" name="submitEtudiant" value="addEtudiant" />
-    <input type="submit" name="submitEtudiant" value="addBonusEtudiant" />
-    <input type="submit" name="submitEtudiant" value="updateEtudiant" />
-    <input type="submit" name="submitEtudiant" value="deleteEtudiant" />
+    <input type="submit" name="submitEtudiant" value="add_Et" />
+    <input type="submit" name="submitEtudiant" value="addBonus_Et" />
+    <input type="submit" name="submitEtudiant" value="update_Et" />
+    <input type="submit" name="submitEtudiant" value="delete_Et" />
 </form>
-    <button onclick="document.getElementById('input').value = ''">Clear</button>
-<!-- ******************************************************************* search -->
+<!-- ----------------------------------------------------------- clear inputs -->
+<script type="text/javascript">
+function ClearMyInput() {
+	document.getElementById('in_id').value = '';
+	document.getElementById('in_nm').value = '';
+	document.getElementById('in_pwd').value = '';
+	document.getElementById('in_sp').value = '';
+}
+</script>
+<button onclick="ClearMyInput()">Clear</button>
+<!-- ----------------------------------------------------------- search -->
 <form method="post">
     <input type="text" name="name_etudiant_searsh" placeholder="search" />
     <input type="submit" value="search" />
@@ -59,4 +71,6 @@
   </tr>
 </c:forEach>
 </table>
+</div>
+
 </div>

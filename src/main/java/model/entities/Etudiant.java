@@ -14,8 +14,11 @@ public class Etudiant extends C_UD {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	// -----------------------------
+	@Column(name="name", unique=true,nullable = false)
 	private String name;
+	// -----------------------------
 	private String password;
+	// -----------------------------
 	private int sizePackage;  // count book accessible
 	// -----------------------------
 	@ManyToOne

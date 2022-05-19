@@ -11,8 +11,8 @@ import model.entities.Universite;
 
 public class DB {
 	// --------------------------------------------- Entity Manager
-	private EntityManagerFactory emf;
-	public EntityManager em;
+	private static EntityManagerFactory emf;
+	public static EntityManager em;
 
 	// --------------------------------------------- Dependency Inversion pattern
 	private DB() {

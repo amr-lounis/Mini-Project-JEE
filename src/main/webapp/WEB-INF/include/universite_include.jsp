@@ -1,6 +1,6 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 
-<div style="width: 30%;  float: left; overflow: scroll;border-style:solid;height: 500; border-color: #FF0000"> 
+<div class="fragment"> 
 <form method="post">
 	<table border="1">
 	<tr><td>ID </td><td><input type="text"
