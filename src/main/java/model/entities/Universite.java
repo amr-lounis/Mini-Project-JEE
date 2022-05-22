@@ -19,7 +19,7 @@ public class Universite extends C_UD{
 	
 	//----------------------------------------------------------------- static code
 	
-	public static Universite getOne(Long id) {
+	public static Universite getOneById(Long id) {
 		try {
 			return DB.getInstanceDB().em.find(Universite.class, id);
 		} catch (Exception e) {
@@ -35,7 +35,7 @@ public class Universite extends C_UD{
 	
 	public static Universite addNew(String name, Long packageType_id)  {
 		try {
-			PackageType pt = PackageType.getOne(packageType_id);
+			PackageType pt = PackageType.getOneById(packageType_id);
 			Universite u = new Universite(name, pt);
 			u.create();
 			return u;

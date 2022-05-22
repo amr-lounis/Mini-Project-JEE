@@ -54,8 +54,7 @@ public class Etudiant extends C_UD {
 	
 	public static Etudiant addNew(String name, String password, Long universite_id)  {
 		try {
-			Universite u = Universite.getOne(universite_id);
-			Etudiant e =new Etudiant(name,password,u);
+			Etudiant e =new Etudiant(name,password,universite_id);
 			e.create();
 			return e;
 		} catch (Exception e) {return null;}
@@ -65,7 +64,7 @@ public class Etudiant extends C_UD {
 			Etudiant e = Etudiant.getOneById(id);
 			e.setName(name);
 			e.setPassword(password);
-			Universite u = Universite.getOne(universite_id);
+			Universite u = Universite.getOneById(universite_id);
 			e.setUniversite(u);;
 			e.create();
 			return e;
@@ -74,15 +73,11 @@ public class Etudiant extends C_UD {
 	//----------------------------------------------------------------- object code
 	public Etudiant() {}
 	
-	public Etudiant(String name, String password, Universite universite) {
+	public Etudiant(String name, String password, Long universite_id) {
 		this.name = name;
 		this.password = password;
-		this.universite = universite;
-		
-		String pn = getPackageName();
-		if(pn.equals("premium"))this.sizePackage = 20;
-		else if(pn.equals("standard"))this.sizePackage = 10;
-		else if(pn.equals("illimite"))this.sizePackage = 1000000000;
+		this.universite = Universite.getOneById(universite_id);
+		this.sizePackage = this.universite.getPackageType().getPackageSizeInitial();
 	}
 
 	public int addBonus() {
@@ -100,6 +95,15 @@ public class Etudiant extends C_UD {
 	public void takeBookFromLibrary(Book b) {
 		if(this.getNumberOfMyBooksNotExpire() < sizePackage) {
 			new EtudiantBook(this, b).create();
+		}
+		else {
+			System.out.println("********** : canot add new book");
+		}
+	}
+	
+	public void takeBookFromLibrary(Long id) {
+		if(this.getNumberOfMyBooksNotExpire() < sizePackage) {
+			new EtudiantBook(this, Book.getOneById(id)).create();
 		}
 		else {
 			System.out.println("********** : canot add new book");

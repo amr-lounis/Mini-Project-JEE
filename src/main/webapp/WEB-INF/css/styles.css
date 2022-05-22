@@ -1,0 +1,9 @@
+.fragment{
+	width: 32%;
+	float: left;
+	overflow: scroll;
+	border-style:solid;
+	background-color: #AAAAAA;
+	border-color: #0000FF;
+	height: 500px;
+}

@@ -13,9 +13,10 @@ public class PackageType extends C_UD{
 	private Long id;
 	//-----------------------------
 	private String name;
-
+	//-----------------------------
+	private int packageSizeInitial;
 	//----------------------------------------------------------------- static code
-	public static PackageType getOne(Long id) {
+	public static PackageType getOneById(Long id) {
 		return DB.getInstanceDB().em.find(PackageType.class, id);
 	}
 	public static List<PackageType> search(String s) {
@@ -25,9 +26,9 @@ public class PackageType extends C_UD{
 		return query.getResultList();
 	}
 	
-	public static PackageType addNew(String name)  {
+	public static PackageType addNew(String name,int packageSizeInitial)  {
 		try {
-			PackageType pt = new PackageType(name);
+			PackageType pt = new PackageType(name,packageSizeInitial);
 			pt.create();
 			return pt;
 		} catch (Exception e) {return null;}
@@ -35,8 +36,9 @@ public class PackageType extends C_UD{
 	//----------------------------------------------------------------- Object code
 	public PackageType() {}
 	
-    public PackageType(String name) {
+    public PackageType(String name,int packageSizeInitial ) {
     	this.name = name;
+    	this.packageSizeInitial = packageSizeInitial;
     }
 	//----------------------------------------------------------------- Getter Setter
 	public Long getId() {
@@ -50,5 +52,11 @@ public class PackageType extends C_UD{
 	}
 	public void setName(String name) {
 		this.name = name;
+	}
+	public int getPackageSizeInitial() {
+		return packageSizeInitial;
+	}
+	public void setPackageSizeInitial(int packageSizeInitial) {
+		this.packageSizeInitial = packageSizeInitial;
 	}
 }

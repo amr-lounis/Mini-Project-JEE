@@ -20,7 +20,7 @@ public class Book extends C_UD{
 	private Set<EtudiantBook> etudiantbook = new HashSet<EtudiantBook>();
 
 	//----------------------------------------------------------------- static code
-	public static Book getOne(Long id) {
+	public static Book getOneById(Long id) {
 		return DB.getInstanceDB().em.find(Book.class, id);
 	}
 	public static List<Book> search(String s) {

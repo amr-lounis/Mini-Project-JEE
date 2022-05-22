@@ -9,17 +9,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<style>
-.fragment{
-	width: 32%;
-	float: left;
-	overflow: scroll;
-	border-style:solid;
-	background-color: #AAAAAA;
-	border-color: #0000FF;
-	height: 500px;
-}
-</style>
+<style><%@ include file="/WEB-INF/css/styles.css" %></style>
 </head>
 <body>
 <div style="width: 100%;">
