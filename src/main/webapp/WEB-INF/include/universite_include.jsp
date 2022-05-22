@@ -4,11 +4,11 @@
 <form method="post">
 	<table border="1">
 	<tr><td>ID </td><td><input type="text"
-	 value="${(param.selectUniversite != null ) ? Universite.getOne(param.selectUniversite).id : ''}"/></td></tr>
+	 value="${(param.selectUniversite != null ) ? Universite.getOneById(param.selectUniversite).id : ''}"/></td></tr>
 	<tr><td>NAME </td><td><input type="text"
-	 value="${(param.selectUniversite != null ) ? Universite.getOne(param.selectUniversite).name : ''}"/></td></tr>
+	 value="${(param.selectUniversite != null ) ? Universite.getOneById(param.selectUniversite).name : ''}"/></td></tr>
     <tr><td>Package Type </td><td><input type="text"
-	 value="${(param.selectUniversite != null ) ? Universite.getOne(param.selectUniversite).packageType.name : ''}"/></td></tr>
+	 value="${(param.selectUniversite != null ) ? Universite.getOneById(param.selectUniversite).packageType.name : ''}"/></td></tr>
     </table>
 </form>
 <form method="post">

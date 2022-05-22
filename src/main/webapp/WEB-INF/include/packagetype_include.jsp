@@ -4,9 +4,9 @@
 <form method="post">
 	<table border="1">
 	<tr><td>ID </td><td><input type="text"
-	 value="${(param.selectPackageType != null ) ? PackageType.getOne(param.selectPackageType).id : ''}"/></td></tr>
+	 value="${(param.selectPackageType != null ) ? PackageType.getOneById(param.selectPackageType).id : ''}"/></td></tr>
 	<tr><td>NAME </td><td><input type="text"
-	 value="${(param.selectPackageType != null ) ? PackageType.getOne(param.selectPackageType).name : ''}"/></td></tr>
+	 value="${(param.selectPackageType != null ) ? PackageType.getOneById(param.selectPackageType).name : ''}"/></td></tr>
     </table>
 </form>
 <form method="post">
