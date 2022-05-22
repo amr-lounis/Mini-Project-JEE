@@ -29,15 +29,16 @@
 
 <c:choose>
   <c:when test="${param.Rental_Bo == 'Rental_Bo'}"><!-- add book -->
-   ${sessionScope.etudiant.takeBookFromLibrary(Book.getOneById(1))}
+   ${sessionScope.etudiant.takeBookFromLibrary(Book.getOneById(bo_selected.id))}
   </c:when>
 </c:choose>
 
 <!----------------------------------------------- html submit book-->
 <form method="post">
 	<table border="1">
-	<tr><td>ID </td><td><input id='in_id' type="text"  name="book_id_selected" value="${(bo_selected != null ) ? bo_selected.id : ''}"  readonly/></td></tr>
-	<tr><td>NAME </td><td><input id='in_nm' type="text" name="book_name_selected"  value="${(bo_selected != null ) ? bo_selected.name : ''}"/></td></tr>
+	<tr><td>ID </td><td><input type="text"  name="book_id_selected" value="${(bo_selected != null ) ? bo_selected.id : ''}"  readonly/></td></tr>
+	<tr><td>NAME </td><td><input type="text" name="book_name_selected"  value="${(bo_selected != null ) ? bo_selected.name : ''}"/></td></tr>
+	<tr><td>DOMAINE </td><td><input type="text" name="book_domaine_selected"  value="${(bo_selected != null ) ? bo_selected.domaine : ''}"/></td></tr>
    	</table>
     <input type="submit" name="Rental_Bo" value="Rental_Bo" />
 </form>
