@@ -38,11 +38,11 @@ public class DB {
 	
 	public static void init() {
 		if(PackageType.getOneById(1l) == null) {
-			Book.addNew("book 01", "domaine 01");
-			Book.addNew("book 02", "domaine 02");
-			Book.addNew("book 03", "domaine 03");
-			Book.addNew("book 04", "domaine 04");
-			Book.addNew("book 05", "domaine 05");
+			Book.addNew("book 01", "medicine");
+			Book.addNew("book 02", "computer science");
+			Book.addNew("book 03", "veterinary");
+			Book.addNew("book 04", "Maths");
+			Book.addNew("book 05", "biology");
 
 			PackageType.addNew("premium",20);
 			PackageType.addNew("standard",10);

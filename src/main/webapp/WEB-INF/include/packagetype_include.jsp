@@ -7,6 +7,8 @@
 	 value="${(param.selectPackageType != null ) ? PackageType.getOneById(param.selectPackageType).id : ''}"/></td></tr>
 	<tr><td>NAME </td><td><input type="text"
 	 value="${(param.selectPackageType != null ) ? PackageType.getOneById(param.selectPackageType).name : ''}"/></td></tr>
+	 <tr><td>Size Initial </td><td><input type="text"
+	 value="${(param.selectPackageType != null ) ? PackageType.getOneById(param.selectPackageType).packageSizeInitial : ''}"/></td></tr>
     </table>
 </form>
 <form method="post">

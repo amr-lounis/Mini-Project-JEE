@@ -82,7 +82,7 @@ public class Etudiant extends C_UD {
 
 	public int addBonus() {
 		try {
-			String pn = getPackageName();
+			String pn = universite.getPackageType().getName();
 			if(pn.equals("premium"))this.sizePackage += 10;
 			else if(pn.equals("standard"))this.sizePackage += 5;
 			this.update();
@@ -92,21 +92,23 @@ public class Etudiant extends C_UD {
 		}
 	}
 
-	public void takeBookFromLibrary(Book b) {
+	public boolean takeBookFromLibrary(Book b) {
 		if(this.getNumberOfMyBooksNotExpire() < sizePackage) {
 			new EtudiantBook(this, b).create();
+			return true;
 		}
 		else {
-			System.out.println("********** : canot add new book");
+			return false;
 		}
 	}
 	
-	public void takeBookFromLibrary(Long id) {
+	public boolean takeBookFromLibrary(Long id) {
 		if(this.getNumberOfMyBooksNotExpire() < sizePackage) {
 			new EtudiantBook(this, Book.getOneById(id)).create();
+			return true;
 		}
 		else {
-			System.out.println("********** : canot add new book");
+			return false;
 		}
 	}
 	
@@ -134,11 +136,6 @@ public class Etudiant extends C_UD {
 		String count = query.getSingleResult().toString();
 
 		return (int) Integer.valueOf(count);
-	}
-
-	public String getPackageName() {
-		String pn = universite.getPackageType().getName();
-		return pn;
 	}
 	//----------------------------------------------------------------- Getter Setter
 

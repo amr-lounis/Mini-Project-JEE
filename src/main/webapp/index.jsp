@@ -4,20 +4,14 @@
 <%@page import="model.DB"%>
 <%@page import="model.entities.Etudiant"%>
 <%@page import="java.util.List"%>
+
+${DB.init()}
+
 <html>
 <head>
-<style>
-#content {text-align: center;background-color: #AAAAAA;padding: 50;margin: 50;}
-#footer {text-align: center;background-color: #AA0000;padding: 10;margin: 50;}
-table {   margin-left: auto;margin-right: auto;table-layout:auto; }
-
-</style>
+<style><%@ include file="/WEB-INF/css/styles.css" %></style>
 </head>
 <body>
-
-<div id="header">
-${DB.init()}
-</div>
 
 <c:choose>
   <c:when test="${(param.name eq 'admin') and (param.password eq 'admin')}">

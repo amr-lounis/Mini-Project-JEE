@@ -5,6 +5,10 @@
 	 <c:redirect url = "/"/>
 </c:if>
 
+<c:if test="${sessionScope.session_login == null }"><!--  redirect to main if not login-->
+<c:redirect url = "/"/>
+</c:if>
+
 <c:if test="${sessionScope.session_login != null }"> 
 <table>
   <tr>
@@ -17,7 +21,4 @@
   </tr>
 </table>
 
-</c:if>
-<c:if test="${sessionScope.session_login == null }"><!--  redirect to main if not login-->
-<c:redirect url = "/"/>
 </c:if>
