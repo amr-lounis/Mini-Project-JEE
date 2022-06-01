@@ -1,0 +1,13 @@
+.fragment{
+	width: 32%;
+	float: left;
+	overflow: scroll;
+	border-style:solid;
+	background-color: #AAAAAA;
+	border-color: #0000FF;
+	height: 500px;
+}
+
+#content {text-align: center;background-color: #AAAAAA;padding: 50;margin: 50;}
+#footer {text-align: center;background-color: #AA0000;padding: 10;margin: 50;}
+table {   margin-left: auto;margin-right: auto;table-layout:auto; }
