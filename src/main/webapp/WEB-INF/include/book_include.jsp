@@ -1,4 +1,4 @@
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 
 <div class="fragment"> 
 		<h3> My INFO </h3>
@@ -23,6 +23,7 @@
 
 
 <div class="fragment"> 
+<h3> all books </h3>
 <c:if test="${param.book_id_selected != null}">
 <c:set var="bo_selected" value="${Book.getOneById(param.book_id_selected) }"/>
 </c:if>
@@ -49,8 +50,9 @@
 </form>
 
 <table border="1">
+<tr><th>ID</th><th>NAME</th><th>domaine</th></tr>
 <c:forEach var="b" items="${Book.search(param.name_book_searsh)}">
-  <tr><th width="40">${b.id}</th> <th width="100">${b.name}</th> 
+  <tr><th width="40">${b.id}</th> <th width="100">${b.name}</th>  <th width="100">${b.domaine}</th> 
 	  <th><form method="post">
 	  			<input type="hidden" name="book_id_selected" value="${b.id}" />
 		    	<input type="submit" value="select" />
@@ -67,7 +69,7 @@
 		<table border="1" >
 		<tr><th>ID BOOK</th><th>NAME BOOK</th><th>BEGGIN</th><th> END </th><tr>
 		<c:forEach var="b" items="${sessionScope.etudiant.getMyBooksNotExpireAllInfo()}">
-		  <tr><th width="30">${b[0]}</th><th>${b[1]}</th><th>${b[2]}</th><th>${b[3]}</th><th><a href="books/${b[0]}.jpg">download</a></tr></tr>
+		  <tr><th width="30">${b[0]}</th><th>${b[1]}</th><th>${b[2]}</th><th>${b[3]}</th><th><a href="books/${b[0]}.pdf">download</a></tr></tr>
 		</c:forEach>
 		</table>
 </div>

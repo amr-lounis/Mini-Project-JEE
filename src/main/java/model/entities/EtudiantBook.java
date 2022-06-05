@@ -4,7 +4,7 @@ import java.util.Date;
 import javax.persistence.*;
 
 @Entity
-public class EtudiantBook extends C_UD{
+public class EtudiantBook extends C_UD {
 	//----------------------------------------------------------------- definition
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -75,7 +75,5 @@ public class EtudiantBook extends C_UD{
 	public void setBook(Book book) {
 		this.book = book;
 	}
-	
-	
 	
 }

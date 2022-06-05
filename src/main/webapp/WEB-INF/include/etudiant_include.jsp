@@ -1,6 +1,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 
 <div class="fragment"> 
+<h2> Erudiants  </h2>
 <c:if test="${param.etudiant_id_selected != null}">
 <c:set var="et_selected" value="${Etudiant.getOneById(param.etudiant_id_selected) }"/>
 </c:if>

@@ -1,6 +1,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 
 <div class="fragment"> 
+<h2> package type </h2>
 <form method="post">
 	<table border="1">
 	<tr><td>ID </td><td><input type="text"
